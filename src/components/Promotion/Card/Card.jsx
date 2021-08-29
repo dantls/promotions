@@ -9,8 +9,8 @@ import {
   CardDescription,
   CardCommentsCount,
   CardLink
-  
 } from './styles';
+
 import CommentCard from '../Comment/Comment';
 
 export default function PromotionCard({promotion}){
@@ -27,6 +27,7 @@ export default function PromotionCard({promotion}){
     <Container>
       <CardImage 
         src={imageUrl}
+        alt={title}
       />
       <CardInfo>
         <CardTitle>{title}</CardTitle>

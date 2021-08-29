@@ -1,0 +1,23 @@
+import React from 'react';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom';
+
+import PagesPromotionSearch from 'pages/Promotion/Search/Search'
+import PagesPromotionForm from 'pages/Promotion/Form/Form'
+
+export default function Root(){
+  return (
+    <Router>
+      <Switch>
+        <Route path="/create" component={PagesPromotionForm}/>
+        <Route path="/edit/:id" component={PagesPromotionForm}/>
+        <Route path="/" component={PagesPromotionSearch}/>
+      </Switch>
+    </Router>
+
+  )
+}
