@@ -14,6 +14,7 @@ import {
 import CommentCard from '../Comment/Comment';
 
 export default function PromotionCard({promotion}){
+
   const {
     title,
     price,
@@ -22,7 +23,6 @@ export default function PromotionCard({promotion}){
     url,
     comments
   } = promotion;
-
   return (
     <Container>
       <CardImage 
