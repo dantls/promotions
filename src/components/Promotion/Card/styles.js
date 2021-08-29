@@ -36,9 +36,10 @@ export const CardFooter = styled.div`
 export const CardInfo = styled.div``;
 export const CardDescription = styled.h1``;
 
-export const CardCommentsCount = styled.div`
+export const CardCommentsCount = styled.span`
   margin-left: auto;
   margin-right: 1.5rem;
+  color: #3498D8;
 `;
 export const CardLink = styled.a`
  border: 1px solid #3498D8;
