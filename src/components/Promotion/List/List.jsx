@@ -15,6 +15,7 @@ export default function PromotionList({loading, promotions}){
     <>
       {promotions.map(promotion=> (
         <PromotionCard 
+          key={promotion.title}
           promotion={promotion}
         />
         ))
