@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 export const Container = styled.div`
   border-radius: 0.5rem;
@@ -47,4 +48,7 @@ export const CardLink = styled.a`
  color: #3498D8;
  text-decoration: none;
  padding: 8px 10px;
+`;
+
+export const CardLinkEdit = styled(Link)`
 `;
