@@ -8,7 +8,8 @@ import {
   CardFooter,
   CardDescription,
   CardCommentsCount,
-  CardLink
+  CardLink,
+  CardLinkEdit
 } from './styles';
 
 import CommentCard from '../Comment/Comment';
@@ -46,6 +47,7 @@ export default function PromotionCard({promotion}){
           <CardDescription>{description}</CardDescription>
           <CardLink href={url} target="_blank" without rel="noreferrer">IR PARA O SITE</CardLink>
         </CardFooter>
+        <CardLinkEdit to={`/edit/${promotion.id}`}>Editar</CardLinkEdit>    
       </CardInfo>
     </Container>
   )
