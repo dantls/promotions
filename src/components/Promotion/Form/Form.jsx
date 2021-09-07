@@ -1,6 +1,5 @@
 import React, { useState , useEffect } from 'react';
 import Input from './Input/Input';
-import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import useApi from 'hooks/useApi';
 
@@ -23,7 +22,7 @@ export default function PromotionForm({id}){
   const [values, setValues] = useState(id ? null : initialValue);
   const history = useHistory();
   
-  const [load , loadInfo] = useApi({
+  const [load] = useApi({
     url:`/promotions/${id}`,
     method: 'get',
     onCompleted: (response) => {
@@ -44,6 +43,7 @@ export default function PromotionForm({id}){
     if(id){
       load()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[id])
 
 
