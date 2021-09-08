@@ -14,7 +14,7 @@ import {
 
 import CommentCard from '../Comment/Comment';
 
-export default function PromotionCard({promotion}){
+export default function PromotionCard({promotion, onClickComments}){
 
   const {
     title,
@@ -38,16 +38,18 @@ export default function PromotionCard({promotion}){
           {comments.length > 0 && (
             <CommentCard comment={comments[0].comment} />
           )}
-          <CardCommentsCount>
+          <CardCommentsCount
+            onClick={onClickComments}
+          >
             {comments.length}{' '}
             {comments.length > 1 
               ? 'Comentários'
               : 'Comentário'}
           </CardCommentsCount>
           <CardDescription>{description}</CardDescription>
-          <CardLink href={url} target="_blank" without rel="noreferrer">IR PARA O SITE</CardLink>
+          <CardLink href={url} target="_blank" without rel="noreferrer">Ir para o Site</CardLink>
+          <CardLinkEdit to={`/edit/${promotion.id}`}>Editar</CardLinkEdit>    
         </CardFooter>
-        <CardLinkEdit to={`/edit/${promotion.id}`}>Editar</CardLinkEdit>    
       </CardInfo>
     </Container>
   )
