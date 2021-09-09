@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import PromotionCard from 'components/Promotion/Card/Card'
-import UIModal from 'components/UI/Modal/Modal'
+import PromotionModal from 'components/Promotion/Modal/Modal'
 
 export default function PromotionList({loading,error,promotions}){
 
@@ -38,12 +38,13 @@ export default function PromotionList({loading,error,promotions}){
         />
         ))
       }
-      <UIModal 
-        isOpen={Boolean(promotionId)}
-        onClickClose={() => setPromotionId(null)}
-      >
-        <h1>Comentários</h1>
-      </UIModal>
+      {promotionId && (
+       <PromotionModal 
+         promotionId={promotionId}
+         onClickClose = {()=> setPromotionId(null)}
+       />
+      )}
+       
     </>
   )
 }

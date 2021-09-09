@@ -1,0 +1,20 @@
+.promotion-modal-comments-tree{
+  list-style: none;
+  padding-left: 0;
+}
+
+.promotion-modal-comments-tree__item {
+  display:flex;
+}
+.promotion-modal-comments-tree__avatar{
+  width: 5rem;
+  height: 5rem;
+  border-radius:2.5rem;
+  margin-right: 1rem;
+}
+.promotion-modal-comments-tree__info span {
+  font-weight: 600;
+}
+.promotion-modal-comments-tree__info p{
+  margin-top: 5px;
+}
