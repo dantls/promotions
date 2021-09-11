@@ -34,7 +34,9 @@ $ yarn
 $ yarn add json-server
 $ json-server db.json --p 3333
 ```
-<h3 name='api'>📦 Startar o APP</h3><br>
+
+<h3 name='web'>📦 Startar o APP</h3><br>
+
 ```bash
 # Instale as dependências
 $ yarn
