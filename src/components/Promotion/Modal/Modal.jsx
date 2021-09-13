@@ -29,6 +29,7 @@ export default function PromotionModal({ promotionId, onClickClose }) {
 
   function onSubmit(event) {
     event.preventDefault();
+    try {
     sendComment({
       data: {
         userId: 1,
@@ -37,7 +38,22 @@ export default function PromotionModal({ promotionId, onClickClose }) {
       },
     });
     setComment('');
-    load();
+    load({quietly:true });
+    }catch(e) {}
+    
+  }
+
+  async function sendAnswer(text, parentId){
+    await sendComment({
+      data: {
+        userId: 1,
+        promotionId,
+        comment:text,
+        parentId
+      },
+    });
+    load({quietly:true });
+
   }
 
   return (
@@ -55,7 +71,10 @@ export default function PromotionModal({ promotionId, onClickClose }) {
           {sendCommentInfo.loading ?'Enviando': 'Enviar'}
         </button>
       </form>
-      <PromotionModalCommentsTree comments={loadInfo.data} />
+      <PromotionModalCommentsTree 
+        comments={loadInfo.data} 
+        sendComment={sendAnswer}
+      />
     </UIModal>
   );
 }
