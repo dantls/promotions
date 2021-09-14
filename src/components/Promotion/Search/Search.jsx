@@ -4,6 +4,8 @@ import useApi from 'hooks/useApi';
 
 import PromotionList from 'components/Promotion/List/List'
 
+import UIInfiniteScroll from 'components/UI/InfiniteScroll/InfiniteScroll';
+
 import {
   Header,
   Title,
@@ -22,6 +24,8 @@ export default function PromotionSearch(){
       _embed: 'comments',
       _order:'desc',
       _sort:'id',
+      _limit:4,
+      _page:1,
       title_like: search || undefined
     },
 
@@ -62,6 +66,12 @@ export default function PromotionSearch(){
         loading={loadInfo.loading}
         error={loadInfo.error}      
       />
+      {loadInfo.data
+      &&(
+      <UIInfiniteScroll
+        fetchMore={() => console.log('Apareceu')}
+      />
+      )}
     </>
   )
 }
