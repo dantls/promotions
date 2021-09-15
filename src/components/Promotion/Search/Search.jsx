@@ -13,28 +13,34 @@ import {
   Search
 } from './styles';
 
+const baseParams ={
+  _embed: 'comments',
+  _order:'desc',
+  _sort:'id',
+  _limit:2,
+}
+
 export default function PromotionSearch(){
   const mountRef = useRef(null)
+  const [page,setPage] = useState(1)
   const [search, setSearch] = useState('');
   const [load, loadInfo] = useApi({
     debounceDelay: 300,
     url:'/promotions',
     method: 'get',
-    params: {
-      _embed: 'comments',
-      _order:'desc',
-      _sort:'id',
-      _limit:4,
-      _page:1,
-      title_like: search || undefined
-    },
-
+  
   });
 
   useEffect(() => {
   
     load({
-      debounced: mountRef.current
+      debounced: mountRef.current,
+      params: {
+        ...baseParams,
+        _page:1,
+        title_like: search || undefined
+      },
+  
     });
 
     if(!mountRef.current){
@@ -43,6 +49,29 @@ export default function PromotionSearch(){
     // eslint-disable-next-line react-hooks/exhaustive-deps
   },[search])
  
+
+
+  function fetchMore() {
+    const newPage = page + 1;
+    load({
+      isFetchMore: true,
+      params: {
+        ...baseParams,
+        _page:newPage,
+        title_like: search || undefined
+      },
+      updateRequestInfo: (newRequestInfo, prevRequestInfo)=> ({
+        ...newRequestInfo,
+        data: [
+          ...prevRequestInfo.data,
+          ...newRequestInfo.data,
+        ]
+      })
+    });
+
+    setPage(newPage)
+  }
+
   return(
     <>
       <Header>
@@ -67,9 +96,11 @@ export default function PromotionSearch(){
         error={loadInfo.error}      
       />
       {loadInfo.data
+      && !loadInfo.loading
+      && loadInfo.data?.length< loadInfo.total
       &&(
       <UIInfiniteScroll
-        fetchMore={() => console.log('Apareceu')}
+        fetchMore={fetchMore}
       />
       )}
     </>
