@@ -6,7 +6,7 @@ export default function PromotionList({loading,error,promotions}){
 
   const [promotionId, setPromotionId] = useState(null)
 
-  if(loading || promotions === null){
+  if(promotions === null){
     return ( 
       <div>
         Loading...
@@ -27,6 +27,8 @@ export default function PromotionList({loading,error,promotions}){
       </div>
     )
   }
+  
+
 
   return(
     <>
@@ -38,6 +40,9 @@ export default function PromotionList({loading,error,promotions}){
         />
         ))
       }
+      {loading &&  <div>
+        Carregando mais promoções..
+      </div>}
       {promotionId && (
        <PromotionModal 
          promotionId={promotionId}
