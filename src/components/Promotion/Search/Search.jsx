@@ -97,7 +97,7 @@ export default function PromotionSearch(){
       />
       {loadInfo.data
       && !loadInfo.loading
-      && loadInfo.data?.length< loadInfo.total
+      && loadInfo.data?.length < loadInfo.total
       &&(
       <UIInfiniteScroll
         fetchMore={fetchMore}
